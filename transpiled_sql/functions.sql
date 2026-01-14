@@ -1,0 +1,21 @@
+CREATE OR REPLACE FUNCTION get_employee_salary(
+p_emp_id DECIMAL(38,18))
+RETURNS DECIMAL(38,18)
+
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+GET DIAGNOSTICS CONDITION 1
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN RETURN NULL;
+END;
+
+END;
+
+
+    
+
+    SET v_salary = (
+SELECT
+salary
+FROM employees WHERE emp_id = p_emp_id);
+    RETURN v_salary;

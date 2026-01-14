@@ -1,0 +1,1 @@
+-- Create an index on employees salary column
